@@ -26,7 +26,7 @@ function editStudent()
 
 function deleteStudent($id = null) 
 {
-	if ($id) {
+	if (!$id) {
 		return false;
 	}
 	
@@ -48,7 +48,7 @@ function createStudent()
 	$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
 	$gender = isset($_POST['gender']) ? $_POST['gender'] : null;
 	
-	if ($firstname && $lastname && $gender) {
+	if (strlen($firstname) == 0 && strlen($firstname) == 0 && strlen($firstname) == 0) {
 		return false;
 	}
 	
