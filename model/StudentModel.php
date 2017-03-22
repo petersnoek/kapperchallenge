@@ -24,8 +24,12 @@ function editStudent()
 
 }
 
-function deleteStudent($id) 
+function deleteStudent($id = null) 
 {
+	if ($id) {
+		return false;
+	}
+	
 	$db = openDatabaseConnection();
 
 	$sql = "DELETE FROM students WHERE student_id=:id ";
@@ -34,10 +38,20 @@ function deleteStudent($id)
 		':id' => $id));
 
 	$db = null;
+	
+	return true;
 }
 
-function createStudent($firstname, $lastname, $gender) 
+function createStudent() 
 {
+	$firstname = isset($_POST['firstname']) ? $_POST['firstname'] : null;
+	$lastname = isset($_POST['lastname']) ? $_POST['lastname'] : null;
+	$gender = isset($_POST['gender']) ? $_POST['gender'] : null;
+	
+	if ($firstname && $lastname && $gender) {
+		return false;
+	}
+	
 	$db = openDatabaseConnection();
 
 	$sql = "INSERT INTO students(student_firstname, student_lastname, student_gender) VALUES (:firstname, :lastname, :gender)";
@@ -48,4 +62,6 @@ function createStudent($firstname, $lastname, $gender)
 		':gender' => $gender));
 
 	$db = null;
+	
+	return true;
 }
