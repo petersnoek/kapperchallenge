@@ -11,15 +11,15 @@ function index()
 
 function create()
 {
-	//formulier tonen
 	render("student/create");
 }
 
 function createSave()
 {
 
-	if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender'])) {
-		createStudent($_POST['firstname'], $_POST['lastname'], $_POST['gender']);
+	if (!createStudent()) {
+		header("Location:" . URL . "error/index");
+		exit();
 	}
 
 	header("Location:" . URL . "student/index");
@@ -27,9 +27,6 @@ function createSave()
 
 function edit()
 {
-	//$student = getStudent();
-
-	// getStudent(1);
 
 	render("student/edit");	
 }
@@ -41,8 +38,9 @@ function editSave()
 
 function delete($id)
 {
-	if (isset($id)) {
-		deleteStudent($id);
+	if (deleteStudent()) {
+		header("Location:" . URL . "error/index");
+		exit();
 	}
 
 	header("Location:" . URL . "student/index");
