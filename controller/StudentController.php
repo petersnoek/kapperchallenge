@@ -38,7 +38,7 @@ function editSave()
 
 function delete($id)
 {
-	if (deleteStudent()) {
+	if (!deleteStudent($id)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
