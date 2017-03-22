@@ -31,8 +31,7 @@ function deleteStudent($id)
 	$sql = "DELETE FROM students WHERE student_id=:id ";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':id' => $id
-		));
+		':id' => $id));
 
 	$db = null;
 }
@@ -46,8 +45,7 @@ function createStudent($firstname, $lastname, $gender)
 	$query->execute(array(
 		':firstname' => $firstname,
 		':lastname' => $lastname,
-		':gender' => $gender
-		));
+		':gender' => $gender));
 
 	$db = null;
 }
