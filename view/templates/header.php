@@ -7,3 +7,8 @@
 	<link rel="stylesheet" href="<?= URL ?>">
 </head>
 <body>
+	<nav>
+	<ul>
+		<li><a href="<?= URL ?>home/index">Home</a></li>
+		<li><a href="<?= URL ?>students/index">Students</a></li>
+	</ul>
